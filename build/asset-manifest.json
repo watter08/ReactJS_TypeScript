@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/var/www/SoraMarket/build/static/css/main.a617e044.chunk.css",
+    "main.js": "/var/www/SoraMarket/build/static/js/main.e9346a48.chunk.js",
+    "main.js.map": "/var/www/SoraMarket/build/static/js/main.e9346a48.chunk.js.map",
+    "runtime-main.js": "/var/www/SoraMarket/build/static/js/runtime-main.2b00b76e.js",
+    "runtime-main.js.map": "/var/www/SoraMarket/build/static/js/runtime-main.2b00b76e.js.map",
+    "static/js/2.41b45ff1.chunk.js": "/var/www/SoraMarket/build/static/js/2.41b45ff1.chunk.js",
+    "static/js/2.41b45ff1.chunk.js.map": "/var/www/SoraMarket/build/static/js/2.41b45ff1.chunk.js.map",
+    "static/js/3.dd2afba8.chunk.js": "/var/www/SoraMarket/build/static/js/3.dd2afba8.chunk.js",
+    "static/js/3.dd2afba8.chunk.js.map": "/var/www/SoraMarket/build/static/js/3.dd2afba8.chunk.js.map",
+    "index.html": "/var/www/SoraMarket/build/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/var/www/SoraMarket/build/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.41b45ff1.chunk.js.LICENSE.txt": "/var/www/SoraMarket/build/static/js/2.41b45ff1.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/var/www/SoraMarket/build/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b00b76e.js",
+    "static/js/2.41b45ff1.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.e9346a48.chunk.js"
+  ]
+}
