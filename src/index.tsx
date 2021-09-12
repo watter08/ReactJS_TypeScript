@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { ScrollContext } from 'react-router-scroll-4';
+import 'react-app-polyfill/ie11';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import { PersistGate } from 'redux-persist/integration/react';
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// import store
+import store, { persistor } from './redux/store/store';
+
+// import action
+
+//import utils
+import { definePolyfills, scrollTop } from './Utils';
+
+// import routes
+import Routes from './Routes/';
+
+export function Root() {
+
+    definePolyfills();
+    scrollTop();
+
+
+
+    return (
+        <Provider store={ store } >
+            <PersistGate persistor={ persistor } loading={ <span></span> } >
+                <BrowserRouter basename={ '/' } >
+                    <ScrollContext>
+                        <Routes />
+                    </ScrollContext>
+                </BrowserRouter>
+            </PersistGate>
+        </Provider>
+    );
+}
+
+ReactDOM.render( <Root />, document.getElementById( 'root' ) );
