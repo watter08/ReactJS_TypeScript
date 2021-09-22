@@ -1,50 +1,50 @@
-import {
-    createSlice,
-    PayloadAction
-  } from "@reduxjs/toolkit";
-  import { HomeInitialState } from './InitialState';
+// import {
+//     createSlice,
+//     PayloadAction
+//   } from "@reduxjs/toolkit";
+//   import { HomeInitialState } from './InitialState';
   
-  import * as HomeThunks from "./HomeThunks";
+//   import * as HomeThunks from "./HomeThunks";
 
-  interface HomeInterfaces {
-      Message : string,
-      MessageStatus : string
-  }
+//   interface HomeInterfaces {
+//       Message : string,
+//       MessageStatus : string
+//   }
   
-  //Thunks
+//   //Thunks
   
-  const {
-    fetchHelloWorld    
-  } = HomeThunks;
+//   const {
+//     fetchHelloWorld    
+//   } = HomeThunks;
   
-  //Initial State
-  const initialState = HomeInitialState as HomeInterfaces;
+//   //Initial State
+//   const initialState = HomeInitialState as HomeInterfaces;
   
-  // Slice Reducer
+//   // Slice Reducer
   
-  const HomeSlice = createSlice({
-    name: "Home",
-    initialState,
-    reducers: {
-      HelloWorldCleared(state, action) {
-        state.Message = initialState.Message;
-      },
-    },
-    extraReducers: {   
-      [fetchHelloWorld.pending.toString()]: (state : any, action : PayloadAction<string>) : any => {
-        state.MessageStatus = "loading";
-      },
-      [fetchHelloWorld.fulfilled.type]: (state , action: PayloadAction<any>) => {
-        state.Message = action.payload;
-        state.MessageStatus = "loaded";
-      },
-    },
-  });
+//   const HomeSlice = createSlice({
+//     name: "Home",
+//     initialState,
+//     reducers: {
+//       HelloWorldCleared(state, action) {
+//         state.Message = initialState.Message;
+//       },
+//     },
+//     extraReducers: {   
+//       [fetchHelloWorld.pending.toString()]: (state : any, action : PayloadAction<string>) : any => {
+//         state.MessageStatus = "loading";
+//       },
+//       [fetchHelloWorld.fulfilled.type]: (state , action: PayloadAction<any>) => {
+//         state.Message = action.payload;
+//         state.MessageStatus = "loaded";
+//       },
+//     },
+//   });
   
 
   
-  export const getHomeHelloWorld = (state : any) =>  state.Home.Message;
-  export const getHomeHelloWorldStatus = (state : any) => state.Home.MessageStatus;
+//   export const getHomeHelloWorld = (state : any) =>  state.Home.Message;
+//   export const getHomeHelloWorldStatus = (state : any) => state.Home.MessageStatus;
   
   
   
@@ -52,13 +52,15 @@ import {
   
   
   
-  export default HomeSlice.reducer;
+//   export default HomeSlice.reducer;
   
-  export const {
-    HelloWorldCleared
-  } = HomeSlice.actions;
+//   export const {
+//     HelloWorldCleared
+//   } = HomeSlice.actions;
   
-  //thunk functions
+//   //thunk functions
   
-  export { HomeThunks };
+//   export { HomeThunks };
   
+
+export default {};

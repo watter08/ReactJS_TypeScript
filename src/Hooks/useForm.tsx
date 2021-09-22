@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-	import {   } from "../utils/utilityInputFunctions";
+	import { getInputValue  } from "../Utils/utilityInputFunctions";
 	
 	const useForm = (initialState : any, validations : any , onSubmit : Function) => {
 	  const [state, setState] = useState(initialState);
 	  const [errors, setStateErrors] = useState({});
 	
-	  const getInputErrorMessage = (input, validations) => {
+	  const getInputErrorMessage = (input : any, validations : any) => {
 	    const { name, value } = input;
 	    const errorsMessage = validations[name](value);
 	    return errorsMessage;
 	  };
-	  const getFormErrorMessages = (data, validations) => {
+	  const getFormErrorMessages = (data : any, validations : any) => {
 	
-	    const validationErrors={};
+	    const validationErrors :  any = {};
 	
 	    for(let validationName in validations){
 	       let errorMessage= validations[validationName](data[validationName]);
@@ -25,12 +25,12 @@ import React, { useEffect, useState } from "react";
 	    return validationErrors;
 	  };
 	
-	  const handleChangeInput = ({ currentTarget: input }) => {
+	  const handleChangeInput = ({ currentTarget: input  } : any): any => {
 	    const value = getInputValue(input);
 	    const { name } = input;
 	    const errorMessage = getInputErrorMessage(input, validations);
 	
-	    const newErrors = { ...errors };
+	    const newErrors : any = { ...errors };
 	
 	    if (errorMessage) {
 	      setStateErrors((errors) => ({ ...newErrors, [name]: errorMessage }));
@@ -38,7 +38,7 @@ import React, { useEffect, useState } from "react";
 	      delete newErrors[name];
 	      setStateErrors((errors) => ({ ...newErrors, [name]: errorMessage }));
 	    }
-	    setState((data) => ({ ...data, [name]: value }));
+	    setState((data : any) => ({ ...data, [name]: value }));
 	  };
 	  const handleSubmit = () => {
 	      const formErrorMessages = getFormErrorMessages(state, validations);

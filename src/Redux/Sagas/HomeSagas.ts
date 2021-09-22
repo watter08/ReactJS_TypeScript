@@ -1,0 +1,1 @@
+export const itbis = 18.00;

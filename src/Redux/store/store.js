@@ -1,31 +1,67 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { persistStore } from 'redux-persist';
-//import reducers from "../reducers";
-import cartReducer from '../reducers/cart';
-import productReducer from '../reducers/product';
-import wishReducer from '../reducers/wishlist';
-import demoReducer from '../reducers/demo';
-import compareReducer from '../reducers/compare';
-import filtersReducer from '../reducers/filter';
-import AuthReducer from '../features/Auth/authSlice';
+import { createStore , applyMiddleware } from "redux";
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import CreateSagaMiddleware from 'redux-saga';
 
 
-const store = configureStore({
+
+
+const persistConfig = {
+  key: 'SoraMarket',
+  storage,
+}
+
+
+
+/***************************************************
+ *  IMPORTS REDUCERS
+ * *************************************************/
+
+
+
+
+
+/***************************************************
+ *  END IMPORTS REDUCERS
+ * *************************************************/
+
+
+
+
+
+/***************************************************
+ *  IMPORTS SAGAS
+ * *************************************************/
+
+
+
+
+
+/***************************************************
+ *  END IMPORTS SAGAS
+ * *************************************************/
+
+
+const SagaMiddlewares = CreateSagaMiddleware();
+
+
+
+
+const PersisterReducer = persistReducer(
+  {
   reducer: {
-    cartList: cartReducer,
-    data: productReducer,
-    wishlist: wishReducer,
-    demo: demoReducer,
-    compareList: compareReducer,
-    filter: filtersReducer,
-    Auth : AuthReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-      immutableCheck: false,
-    }),
-});
+    cartList: [],
+  }, 
+},
+persistConfig,
+applyMiddleware(SagaMiddlewares)
+);
 
-export const persistor = persistStore( store );
-export default store;
+
+const Store = createStore(PersisterReducer);
+const Persistor = persistStore(Store);
+
+export default { 
+  Store ,
+  Persistor,
+};
