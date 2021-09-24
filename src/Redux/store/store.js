@@ -1,4 +1,4 @@
-import { createStore , applyMiddleware } from "redux";
+import { createStore , applyMiddleware , combineReducers } from "redux";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import CreateSagaMiddleware from 'redux-saga';
@@ -17,7 +17,7 @@ const persistConfig = {
  *  IMPORTS REDUCERS
  * *************************************************/
 
-
+  const Reducer = combineReducers({CarList : []});
 
 
 
@@ -48,13 +48,9 @@ const SagaMiddlewares = CreateSagaMiddleware();
 
 
 const PersisterReducer = persistReducer(
-  {
-  reducer: {
-    cartList: [],
-  }, 
-},
-persistConfig,
-applyMiddleware(SagaMiddlewares)
+  persistConfig,  
+  Reducer,
+  applyMiddleware(SagaMiddlewares)
 );
 
 
